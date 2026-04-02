@@ -1,0 +1,52 @@
+{
+  "name": "discipline-tracker-backend",
+  "version": "1.0.0",
+  "description": "Production-grade Discipline Tracking System backend",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts",
+    "db:generate": "cross-env drizzle-kit generate",
+    "db:migrate": "cross-env drizzle-kit migrate",
+    "db:push": "cross-env drizzle-kit push",
+    "db:studio": "cross-env drizzle-kit studio",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [
+    "discipline",
+    "tracking",
+    "productivity",
+    "habit"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@logtail/node": "^0.5.8",
+    "@logtail/winston": "^0.5.8",
+    "@neondatabase/serverless": "^0.9.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "drizzle-orm": "^0.31.4",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "helmet": "^7.1.0",
+    "winston": "^3.19.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.2",
+    "cross-env": "^10.1.0",
+    "drizzle-kit": "^0.22.8",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.3.2",
+    "tsx": "^4.15.4",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
