@@ -8,6 +8,8 @@ const envSchema = z.object({
   RATE_LIMIT_WINDOW_MS: z.string().default('900000'),
   RATE_LIMIT_MAX_REQUESTS: z.string().default('100'),
   LOG_LEVEL: z.enum(['error', 'warn', 'info', 'debug']).default('info'),
+  FRONTEND_URL: z.string().optional(),
+  LOGTAIL_SOURCE_TOKEN: z.string().optional(),
 });
 
 const parsed = envSchema.safeParse(process.env);
