@@ -9,7 +9,15 @@
   ],
   "routes": [
     {
+      "src": "/api/v1/(.*)",
+      "dest": "/api/index.ts"
+    },
+    {
       "src": "/api/(.*)",
+      "dest": "/api/index.ts"
+    },
+    {
+      "src": "/health",
       "dest": "/api/index.ts"
     },
     {
@@ -19,5 +27,10 @@
   ],
   "env": {
     "NODE_ENV": "production"
+  },
+  "functions": {
+    "api/index.ts": {
+      "maxDuration": 30
+    }
   }
 }

@@ -10,6 +10,7 @@ const envSchema = z.object({
   LOG_LEVEL: z.enum(['error', 'warn', 'info', 'debug']).default('info'),
   FRONTEND_URL: z.string().optional(),
   LOGTAIL_SOURCE_TOKEN: z.string().optional(),
+  DEFAULT_USER_ID: z.string().uuid().optional(), // For personal use (no auth)
 });
 
 const parsed = envSchema.safeParse(process.env);

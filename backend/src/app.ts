@@ -26,6 +26,9 @@ const getCorsOrigin = () => {
 export const createApp = (): Application => {
   const app = express();
 
+  // Disable etag to prevent 304 caching responses
+  app.set('etag', false);
+
   app.use(helmet());
   app.use(cors({
     origin: getCorsOrigin(),
@@ -49,6 +52,10 @@ export const createApp = (): Application => {
     });
   });
 
+  // API versioning - v1
+  app.use('/api/v1', apiRouter);
+  
+  // Legacy support - mount apiRouter at /api as well (both /api and /api/v1 work)
   app.use('/api', apiRouter);
 
   app.use(notFoundHandler);

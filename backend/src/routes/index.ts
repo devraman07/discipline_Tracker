@@ -1,12 +1,19 @@
 import { Router } from 'express';
-import { logsRouter } from '../modules/logs/logs.routes';
+import { habitsRouter } from '../modules/habits/habits.routes';
+import { trackingRouter } from '../modules/tracking/tracking.routes';
 import { analyticsRouter } from '../modules/analytics/analytics.routes';
-import { streakRouter } from '../modules/streak/streak.routes';
+import { ensureDefaultUserMiddleware } from '../middlewares/ensureDefaultUser';
 
 const router = Router();
 
-router.use('/logs', logsRouter);
+// Apply default user middleware to ALL routes (single user system)
+router.use(ensureDefaultUserMiddleware);
+
+// API v1 routes - all use default user automatically
+router.use('/habits', habitsRouter);
+router.use('/tracking', trackingRouter);
+// Alias /logs to /tracking for frontend compatibility
+router.use('/logs', trackingRouter);
 router.use('/analytics', analyticsRouter);
-router.use('/streak', streakRouter);
 
 export const apiRouter = router;
